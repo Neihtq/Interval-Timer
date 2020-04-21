@@ -1,16 +1,19 @@
 from PyQt5.QtWidgets import QMainWindow, QLabel, QVBoxLayout, QWidget, QPushButton, QHBoxLayout, QDialog
-from PyQt5.QtCore import QTime
+from PyQt5.QtCore import QTime, QUrl
 from countdown import CountdownThread
+from playsound import playsound
+from threading import Thread
 
 import PyQt5.QtMultimedia as M
 import time
 
+DURATION = 7200 # 2h
 
 class IntervalTimerGui(QMainWindow):
     def __init__(self):
         super(QMainWindow, self).__init__()
         self.counter = 0
-        self.time_left = 7200 # 2h
+        self.time_left = DURATION
         self.time = QTime(0, 0, 0) # h m s ms
         self.setup_UI()
     
@@ -75,7 +78,7 @@ class IntervalTimerGui(QMainWindow):
 
     def reset_timer(self):
         self.time = QTime(0, 0, 0)
-        self.time_left = 7200
+        self.time_left = DURATION
         self.time = self.time.addSecs(self.time_left)
         self.time_label.setText(self.time.toString())
 
@@ -97,6 +100,7 @@ class IntervalTimerGui(QMainWindow):
     def alarm(self):
         self.done_btn.setEnabled(True)
         self.start_stop_btn.setEnabled(False)
+        Thread(target=self.play_sound).start()
         self.show_dialog()
 
 
@@ -113,3 +117,7 @@ class IntervalTimerGui(QMainWindow):
         dialog.setLayout(vbox)
         
         dialog.exec()
+
+    
+    def play_sound(self):
+        playsound('src/media/shen.mp3')

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "623778e7f82894556521837ac2002c70028415f619fbca1bb2c3a3a01918ca00"
+            "sha256": "1727f3c1a75a083f61d0a0c86b19747c38f13ec172f5eb53d6370a26b28f9c6b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -48,6 +48,13 @@
                 "sha256:a5d6e8305c6b210849b47a6174ddf9c452b2888340b8177874b862ba6c207645"
             ],
             "version": "==2019.4.18"
+        },
+        "playsound": {
+            "hashes": [
+                "sha256:1e83750a5325cbccee03d6e751ba3e78c037ac95b95a3ba1f38d0c5aca9e1a34"
+            ],
+            "index": "pypi",
+            "version": "==1.2.2"
         },
         "pyinstaller": {
             "hashes": [
